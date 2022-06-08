@@ -11,6 +11,8 @@ fi
 
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 
+export EDITOR="nvim"
+
 awsaddr='ubuntu@ec2-44-201-78-161.compute-1.amazonaws.com'
 
 alias aws='sudo ssh -i ~/.ssh/network_lab.pem $awsaddr'
