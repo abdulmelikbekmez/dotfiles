@@ -117,14 +117,14 @@ if ! shopt -oq posix; then
 fi
 
 
+. "$HOME/.cargo/env"
+
 export EDITOR='nvim'
 export VISUAL='nvim'
 
 
 alias neovide='$HOME/Repos/neovide/target/release/neovide'
 
-alias iseinit='source /opt/Xilinx/14.7/ISE_DS/settings64.sh'
-. "$HOME/.cargo/env"
 
 eval "$(starship init bash)"
 
