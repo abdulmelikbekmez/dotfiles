@@ -127,6 +127,7 @@ alias neovide='$HOME/Repos/neovide/target/release/neovide'
 
 
 eval "$(starship init bash)"
+eval "$(fnm env --use-on-cd)"
 
 
 # BEGIN_KITTY_SHELL_INTEGRATION
