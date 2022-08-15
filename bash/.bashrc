@@ -130,6 +130,10 @@ eval "$(starship init bash)"
 eval "$(fnm env --use-on-cd)"
 
 
+KEY=4d0932e501ee43719117112ef7a086ba
+SCENARIO=1
+alias send='curl --insecure --request PUT --data-binary "@ehlikesf_teknofest.zip" "https://192.168.2.4:1453/put-code?key=$KEY&scenario=$SCENARIO"'
+
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
