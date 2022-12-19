@@ -122,15 +122,19 @@ fi
 export EDITOR='nvim'
 export VISUAL='nvim'
 
+export WEBOTS_HOME="~/Downloads/webots-R2023a-x86-64/webots"
+export PATH="$PATH:/home/abdulmelik/.local/bin"
+
 alias ed="nvim ~/.bashrc"
 alias s="source ~/.bashrc"
-alias ubuntu="distrobox enter ubuntu"
-alias oracle="distrobox enter oracle"
+alias ros2="distrobox enter ros2"
+alias melodic="distrobox enter melodic"
 alias c-format="clang-format -style=Microsoft -dump-config > .clang-format"
 alias update-submodule="git submodule update --remote --merge"
 
 eval "$(starship init bash)"
 eval "$(fnm env --use-on-cd)"
+
 
 
 # KEY=4d0932e501ee43719117112ef7a086ba

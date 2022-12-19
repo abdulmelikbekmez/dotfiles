@@ -2,8 +2,13 @@
 
 font:
   normal:
-    family: CaskaydiaCove Nerd Font Mono 
-    style: Regular
+    # family: CaskaydiaCove Nerd Font Mono 
+    # family: DaddyTimeMono Nerd Font
+    family: Mononoki Nerd Font
+    # family: JetBrainsMono Nerd Font
+    # style: Bold
+
+  size: 20.0
 
 colors:
   primary:
