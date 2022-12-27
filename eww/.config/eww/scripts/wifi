@@ -1,0 +1,29 @@
+#!/bin/bash
+
+essid=$(nmcli c | rg wlo1 | awk '{print ($1)}')
+wifi_status=$(nmcli radio wifi)
+
+if [ $wifi_status == "disabled" ];
+then
+    icon=""
+    text="wifi disabled"
+    col="#575268"
+elif  [ -n $essid ] # string is not null
+then
+    icon=""
+    text="${essid}"
+    col="#a1bdce"
+else
+    icon="睊"
+    text="not connected"
+    col="#575268"
+fi
+
+
+if [[ "$1" == "--COL" ]]; then
+    echo $col
+elif [[ "$1" == "--ESSID" ]]; then
+    echo $text
+elif [[ "$1" == "--ICON" ]]; then
+    echo $icon
+fi

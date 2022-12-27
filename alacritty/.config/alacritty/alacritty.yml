@@ -4,34 +4,34 @@ font:
   normal:
     # family: CaskaydiaCove Nerd Font Mono 
     # family: DaddyTimeMono Nerd Font
-    family: Mononoki Nerd Font
-    # family: JetBrainsMono Nerd Font
-    # style: Bold
+    # family: Fira Code Nerd Font
+    family: JetBrainsMono Nerd Font
+    style: Bold
 
-  size: 20.0
+  size: 15.0
 
-colors:
-  primary:
-    background: '#2d333b'
-    foreground: '#adbac7'
-  normal:
-    black:   '#2d333b'
-    red:     '#f47067'
-    green:   '#8ddb8c'
-    yellow:  '#f69d50'
-    blue:    '#6cb6ff'
-    magenta: '#dcbdfb'
-    cyan:    '#96d0ff'
-    white:   '#adbac7'
-  bright:
-    black:   '#768390'
-    red:     '#f47067'
-    green:   '#8ddb8c'
-    yellow:  '#f69d50'
-    blue:    '#6cb6ff'
-    magenta: '#dcbdfb'
-    cyan:    '#96d0ff'
-    white:   '#adbac7'
+# colors:
+#   primary:
+#     background: '#2d333b'
+#     foreground: '#adbac7'
+#   normal:
+#     black:   '#2d333b'
+#     red:     '#f47067'
+#     green:   '#8ddb8c'
+#     yellow:  '#f69d50'
+#     blue:    '#6cb6ff'
+#     magenta: '#dcbdfb'
+#     cyan:    '#96d0ff'
+#     white:   '#adbac7'
+#   bright:
+#     black:   '#768390'
+#     red:     '#f47067'
+#     green:   '#8ddb8c'
+#     yellow:  '#f69d50'
+#     blue:    '#6cb6ff'
+#     magenta: '#dcbdfb'
+#     cyan:    '#96d0ff'
+#     white:   '#adbac7'
 
 
 # Import additional configuration files
