@@ -117,26 +117,22 @@ if ! shopt -oq posix; then
 fi
 
 
-. "$HOME/.cargo/env"
-
 export EDITOR='nvim'
 export VISUAL='nvim'
 
 export WEBOTS_HOME="~/Downloads/webots-R2023a-x86-64/webots"
-export PATH="$PATH:/home/abdulmelik/.local/bin"
+# export PATH="$PATH:/home/abdulmelik/.local/bin"
 
 alias ed="nvim ~/.bashrc"
 alias s="source ~/.bashrc"
 alias gl="glxinfo | grep OpenGL"
-alias ros2="distrobox enter ros2"
-alias melodic="distrobox enter melodic"
-alias robotaksi="distrobox enter robotaksi"
-alias deneme="distrobox enter deneme"
+alias melodic="distrobox enter test"
+alias foxy="distrobox enter foxy"
 alias c-format="clang-format -style=Microsoft -dump-config > .clang-format"
 alias update-submodule="git submodule update --remote --merge"
 
 eval "$(starship init bash)"
-eval "$(fnm env --use-on-cd)"
+# eval "$(fnm env --use-on-cd)"
 
 
 
