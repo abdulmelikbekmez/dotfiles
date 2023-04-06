@@ -120,22 +120,28 @@ fi
 export EDITOR='nvim'
 export VISUAL='nvim'
 
+export JAVA_HOME="/home/abdulmelik/.sdkman/candidates/java/current"
+
 export WEBOTS_HOME="~/Downloads/webots-R2023a-x86-64/webots"
 # export PATH="$PATH:/home/abdulmelik/.local/bin"
 
 alias ed="nvim ~/.bashrc"
 alias s="source ~/.bashrc"
-alias gl="glxinfo | grep OpenGL"
+alias gl="glxinfo -B"
 alias melodic="distrobox enter test"
 alias foxy="distrobox enter foxy"
 alias c-format="clang-format -style=Microsoft -dump-config > .clang-format"
 alias update-submodule="git submodule update --remote --merge"
 
 eval "$(starship init bash)"
-# eval "$(fnm env --use-on-cd)"
+eval "$(fnm env --use-on-cd)"
 
 
 
 # KEY=4d0932e501ee43719117112ef7a086ba
 # SCENARIO=1
 # alias send='curl --insecure --request PUT --data-binary "@ehlikesf_teknofest.zip" "https://192.168.2.4:1453/put-code?key=$KEY&scenario=$SCENARIO"'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
