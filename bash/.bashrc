@@ -108,13 +108,12 @@ if ! shopt -oq posix; then
 fi
 
 
-export PATH="$PATH:/home/abdulmelik/.cargo/bin"
-# export PATH="$PATH:/home/abdulmelik/.local/bin"
+source $HOME/.cargo/env
 
 export EDITOR='nvim'
 export VISUAL='nvim'
 
-export JAVA_HOME="/home/abdulmelik/.sdkman/candidates/java/current"
+export JAVA_HOME="/home/$USER/.sdkman/candidates/java/current"
 
 export WEBOTS_HOME="~/Downloads/webots-R2023a-x86-64/webots"
 
