@@ -63,15 +63,6 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-    xterm*|rxvt*)
-        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-        ;;
-    *)
-        ;;
-esac
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -117,19 +108,19 @@ if ! shopt -oq posix; then
 fi
 
 
+export PATH="$PATH:/home/abdulmelik/.cargo/bin"
+# export PATH="$PATH:/home/abdulmelik/.local/bin"
+
 export EDITOR='nvim'
 export VISUAL='nvim'
 
 export JAVA_HOME="/home/abdulmelik/.sdkman/candidates/java/current"
 
 export WEBOTS_HOME="~/Downloads/webots-R2023a-x86-64/webots"
-# export PATH="$PATH:/home/abdulmelik/.local/bin"
 
 alias ed="nvim ~/.bashrc"
 alias s="source ~/.bashrc"
 alias gl="glxinfo -B"
-alias melodic="distrobox enter test"
-alias foxy="distrobox enter foxy"
 alias c-format="clang-format -style=Microsoft -dump-config > .clang-format"
 alias update-submodule="git submodule update --remote --merge"
 
