@@ -38,14 +38,14 @@ install_rust_and_dependencies ()
         echo "Rust bulunamadi... Yukleniyor"
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     fi
+    source "$HOME/.cargo/env"
     source ~/.bashrc
 
     if ! command -v cargo >/dev/null 2>&1; then
         echo "Rust yuklu ama source lanmamis..."
         echo 'export PATH="$PATH:/home/$USER/.cargo/bin"' >> ~/.bashrc
         source ~/.bashrc
-    else
-
+    fi
 
     install_cargo_dep fd-find
     install_cargo_dep ripgrep
@@ -63,8 +63,8 @@ install_rust_and_dependencies ()
 setup()
 { 
     install_with_apt stow
-    rm ~/.bashrc
-    stow */
+    # rm ~/.bashrc
+    # stow */
 }
 
 install_with_apt wget
