@@ -60,6 +60,7 @@ setup()
     stow */
 }
 
+install_with_apt wget
 install_neovim
 install_rust_and_dependencies
 setup
