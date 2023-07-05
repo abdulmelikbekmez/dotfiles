@@ -1,3 +1,22 @@
+install_cargo_dep()
+{
+    if ! command -v $1 >/dev/null 2>&1; then
+        echo "$1 bulunamadi..."
+        cargo install $1
+    else
+        echo "$1 zaten yuklu"
+    fi
+}
+
+install_with_apt()
+{
+    if ! command -v $1 >/dev/null 2>&1; then
+        echo "$1 bulunamadi..."
+        sudo apt install $1
+    else
+        echo "$1 zaten yuklu :)"
+    fi
+}
 install_neovim ()
 {
     if command -v nvim.appimage >/dev/null 2>&1; then
@@ -21,31 +40,25 @@ install_rust_and_dependencies ()
     fi
     . ~/.bashrc
 
-    cargo install fd-find
-    cargo install ripgrep
+    install_cargo_dep fd-find
+    install_cargo_dep ripgrep
 
     if command -v node >/dev/null 2>&1; then
         echo "Nodejs zaten yuklu"
     else
-        cargo install fnm
+        install_cargo_dep fnm
         . ~/.bashrc
         fnm install 18.16.1
         . ~/.bashrc
     fi
 }
 
-
 setup()
 { 
-    if ! command -v stow >/dev/null 2>&1; then
-        echo "Stow bulunamadi.."
-        sudo apt install stow
-        echo "stow yuklendi.."
-    fi
+    install_with_apt stow
     rm ~/.bashrc
     stow */
 }
-
 
 install_neovim
 install_rust_and_dependencies
