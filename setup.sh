@@ -23,10 +23,11 @@ install_neovim ()
         echo "Neovim yuklu"
     else
         echo "Neovim bulunamadi... Yukleniyor."
-        wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-        chmod +x nvim.appimage
-        sudo ln -s $PWD/nvim.appimage /usr/local/bin/
+        wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+        tar -xf nvim-linux64.tar.gz
+        sudo ln -s $PWD/nvim-linux64/bin/nvim /usr/local/bin/
         echo "Neovim yuklendi."
+        rm -rf nvim-linux64.tar.gz
     fi
 }
 
