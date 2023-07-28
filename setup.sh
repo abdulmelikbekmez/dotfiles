@@ -1,10 +1,10 @@
 install_cargo_dep()
 {
     if ! command -v $1 >/dev/null 2>&1; then
-        echo "$1 bulunamadi..."
-        cargo install $1
+        echo "$2 bulunamadi..."
+        cargo install $2
     else
-        echo "$1 zaten yuklu"
+        echo "$2 zaten yuklu"
     fi
 }
 
@@ -19,7 +19,7 @@ install_with_apt()
 }
 install_neovim ()
 {
-    if command -v nvim.appimage >/dev/null 2>&1; then
+    if command -v nvim >/dev/null 2>&1; then
         echo "Neovim yuklu"
     else
         echo "Neovim bulunamadi... Yukleniyor."
@@ -48,8 +48,8 @@ install_rust_and_dependencies ()
         source ~/.bashrc
     fi
 
-    install_cargo_dep fd-find
-    install_cargo_dep ripgrep
+    install_cargo_dep fd fd-find
+    install_cargo_dep rg ripgrep
 
     if command -v node >/dev/null 2>&1; then
         echo "Nodejs zaten yuklu"
@@ -64,11 +64,11 @@ install_rust_and_dependencies ()
 setup()
 { 
     install_with_apt stow
-    # rm ~/.bashrc
-    # stow */
+    rm ~/.bashrc
+    stow */
 }
 
 install_with_apt wget
-install_neovim
 install_rust_and_dependencies
 setup
+install_neovim
