@@ -1,60 +1,99 @@
+BIN_PATH="$HOME/.local/bin/"
+
+eccho ()
+{
+    echo ""
+    echo "*********"
+    echo $1
+    echo "*********"
+    echo ""
+}
+
 install_cargo_dep()
 {
     if ! command -v $1 >/dev/null 2>&1; then
-        echo "$2 bulunamadi..."
+        eccho "$2 bulunamadi..."
         cargo install $2
     else
-        echo "$2 zaten yuklu"
+        eccho "$2 zaten yuklu"
     fi
 }
 
 install_with_apt()
 {
     if ! command -v $1 >/dev/null 2>&1; then
-        echo "$1 bulunamadi..."
+        eccho "$1 bulunamadi..."
         sudo apt install $1
     else
-        echo "$1 zaten yuklu :)"
+        eccho "$1 zaten yuklu :)"
     fi
 }
 install_neovim ()
 {
     if command -v nvim >/dev/null 2>&1; then
-        echo "Neovim yuklu"
+        eccho "Neovim yuklu"
     else
-        echo "Neovim bulunamadi... Yukleniyor."
+        eccho "Neovim bulunamadi... Yukleniyor."
         wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
         tar -xf nvim-linux64.tar.gz
-        sudo ln -s $PWD/nvim-linux64/bin/nvim /usr/local/bin/
-        echo "Neovim yuklendi."
+        mv nvim-linux64 ${HOME}
+        sudo ln -s ${HOME}/nvim-linux64/bin/nvim $BIN_PATH
+        eccho "Neovim yuklendi."
         rm -rf nvim-linux64.tar.gz
+    fi
+}
+
+install_deb ()
+{
+    if command -v $1 >/dev/null 2>&1; then
+        eccho "$1 zaten yuklu :)"
+    else
+        eccho "$1 bulunamadi... Yukleniyor"
+        wget $2
+        sudo dpkg -i $3
+        rm $3
+    fi
+}
+
+install_zip () 
+{
+
+    if command -v $1 >/dev/null 2>&1; then
+        eccho "$1 zaten yuklu :)"
+    else
+        eccho "$1 bulunamadi... Yukleniyor"
+        wget $2
+        unzip $3
+        chmod +x $1
+        mv $1 $BIN_PATH
+        rm $3
     fi
 }
 
 install_rust_and_dependencies ()
 {
     if command -v cargo >/dev/null 2>&1; then
-        echo "Rust zaten yuklu"
+        eccho "Rust zaten yuklu"
     else
-        echo "Rust bulunamadi... Yukleniyor"
+        eccho "Rust bulunamadi... Yukleniyor"
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     fi
     source "$HOME/.cargo/env"
     source ~/.bashrc
 
     if ! command -v cargo >/dev/null 2>&1; then
-        echo "Rust yuklu ama source lanmamis..."
+        eccho "Rust yuklu ama source lanmamis..."
         echo 'export PATH="$PATH:/home/$USER/.cargo/bin"' >> ~/.bashrc
         source ~/.bashrc
     fi
 
-    install_cargo_dep fd fd-find
-    install_cargo_dep rg ripgrep
+    install_deb fd https://github.com/sharkdp/fd/releases/download/v8.7.0/fd-musl_8.7.0_amd64.deb fd-musl_8.7.0_amd64.deb
+    install_deb rg https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb ripgrep_13.0.0_amd64.deb
 
     if command -v node >/dev/null 2>&1; then
-        echo "Nodejs zaten yuklu"
+        eccho "Nodejs zaten yuklu"
     else
-        install_cargo_dep fnm
+        install_zip fnm https://github.com/Schniz/fnm/releases/download/v1.35.0/fnm-linux.zip fnm-linux.zip
         . ~/.bashrc
         fnm install 18.16.1
         . ~/.bashrc
@@ -64,11 +103,18 @@ install_rust_and_dependencies ()
 setup()
 { 
     install_with_apt stow
-    rm ~/.bashrc
-    stow */
+    # rm ~/.bashrc
+    # stow */
 }
+if [ ! -d "$BIN_PATH" ];
+then
+	eccho "$BIN_PATH directory does not exist."
+    mkdir -p $BIN_PATH
+else
+	eccho "$BIN_PATH directory exists."
+fi
 
 install_with_apt wget
 install_rust_and_dependencies
-setup
 install_neovim
+setup
