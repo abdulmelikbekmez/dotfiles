@@ -1,4 +1,4 @@
-BIN_PATH="$HOME/.local/bin/"
+BIN_PATH="$HOME/.local/bin"
 
 eccho ()
 {
