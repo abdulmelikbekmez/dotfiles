@@ -28,6 +28,23 @@ install_with_apt()
         eccho "$1 zaten yuklu :)"
     fi
 }
+
+install_with_tar ()
+{
+    if command -v $1 >/dev/null 2>&1; then
+        eccho "$1 yuklu"
+    else
+        eccho "$1 bulunamadi... Yukleniyor."
+        wget $2
+        tar -xf $3
+        cd $4
+        mv $1 $BIN_PATH
+        cd ..
+        rm -rf $3
+        rm -rf $4
+        eccho "$1 yuklendi."
+    fi
+}
 install_neovim ()
 {
     if command -v nvim >/dev/null 2>&1; then
@@ -87,8 +104,6 @@ install_rust_and_dependencies ()
         source ~/.bashrc
     fi
 
-    install_deb fd https://github.com/sharkdp/fd/releases/download/v8.7.0/fd-musl_8.7.0_amd64.deb fd-musl_8.7.0_amd64.deb
-    install_deb rg https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb ripgrep_13.0.0_amd64.deb
 
     if command -v node >/dev/null 2>&1; then
         eccho "Nodejs zaten yuklu"
@@ -100,21 +115,47 @@ install_rust_and_dependencies ()
     fi
 }
 
+install_zellij ()
+{
+    if command -v zellij >/dev/null 2>&1; then
+        eccho "zellij yuklu"
+    else
+        eccho "zellij bulunamadi... Yukleniyor."
+        wget https://github.com/zellij-org/zellij/releases/download/v0.37.2/zellij-x86_64-unknown-linux-musl.tar.gz
+        tar -xf zellij-x86_64-unknown-linux-musl.tar.gz
+        mv zellij $BIN_PATH
+        rm -rf zellij-x86_64-unknown-linux-musl.tar.gz
+        eccho "zellij yuklendi."
+    fi
+}
+
 setup()
 { 
     install_with_apt stow
     # rm ~/.bashrc
     # stow */
 }
+
 if [ ! -d "$BIN_PATH" ];
 then
-	eccho "$BIN_PATH directory does not exist."
+	eccho "$BIN_PATH klasoru bulunamadi..."
     mkdir -p $BIN_PATH
 else
-	eccho "$BIN_PATH directory exists."
+	eccho "$BIN_PATH klasoru bulundu :)"
 fi
+
+if [[ ":$PATH:" == *":$BIN_PATH:"* ]]; then
+  echo "Your path is correctly set"
+else
+  echo "Your path is missing ~/.local/bin, you might want to add it."
+  export PATH=$PATH:~/.local/bin
+fi
+
 
 install_with_apt wget
 install_rust_and_dependencies
+install_deb rg https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb ripgrep_13.0.0_amd64.deb
+install_with_tar fd https://github.com/sharkdp/fd/releases/download/v8.7.0/fd-v8.7.0-x86_64-unknown-linux-gnu.tar.gz fd-v8.7.0-x86_64-unknown-linux-gnu.tar.gz fd-v8.7.0-x86_64-unknown-linux-gnu
+install_zellij
 install_neovim
 setup

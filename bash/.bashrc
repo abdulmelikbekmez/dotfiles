@@ -109,6 +109,7 @@ fi
 
 
 source $HOME/.cargo/env
+export PATH=$PATH:~/.local/bin
 
 export EDITOR='nvim'
 export VISUAL='nvim'
