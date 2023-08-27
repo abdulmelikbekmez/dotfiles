@@ -4,8 +4,8 @@ font:
   normal:
     # family: CaskaydiaCove Nerd Font Mono 
     # family: DaddyTimeMono Nerd Font
-    # family: Fira Code Nerd Font
-    family: JetBrainsMono Nerd Font
+    family: Fira Code Nerd Font
+    # family: JetBrainsMono Nerd Font
     # style: Bold
     # family: Terminess Nerd Font
 

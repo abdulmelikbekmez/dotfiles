@@ -113,6 +113,7 @@ export PATH=$PATH:~/.local/bin
 
 export EDITOR='nvim'
 export VISUAL='nvim'
+export WORKSPACE=''
 
 export JAVA_HOME="/home/$USER/.sdkman/candidates/java/current"
 
@@ -126,6 +127,18 @@ alias update-submodule="git submodule update --remote --merge"
 
 eval "$(starship init bash)"
 eval "$(fnm env --use-on-cd)"
+
+build ()
+{
+    cd $WORKSPACE
+
+    if [[ "$#" -eq 1 ]]; then
+        colcon build --symlink-install --packages-select $1
+    elif [[ "$#" -eq 0 ]]; then
+        colcon build --symlink-install 
+    fi
+    
+}
 
 
 
