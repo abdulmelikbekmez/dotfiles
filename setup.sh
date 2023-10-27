@@ -60,6 +60,21 @@ install_neovim ()
     fi
 }
 
+install_helix ()
+{
+    if command -v hx >/dev/null 2>&1; then
+        eccho "Helix Yuklu"
+    else
+        eccho "Helix bulunamadi... Yukleniyor."
+        wget https://github.com/helix-editor/helix/releases/download/23.10/helix-23.10-x86_64-linux.tar.xz
+        tar -xf helix-23.10-x86_64-linux.tar.xz 
+        mv helix-23.10-x86_64-linux ${HOME}/helix
+        sudo ln -s ${HOME}/helix/hx $BIN_PATH
+        eccho "Helix yuklendi."
+        rm -rf helix-23.10-x86_64-linux.tar.xz
+    fi
+}
+
 install_deb ()
 {
     if command -v $1 >/dev/null 2>&1; then
@@ -158,4 +173,5 @@ install_deb rg https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ri
 install_with_tar fd https://github.com/sharkdp/fd/releases/download/v8.7.0/fd-v8.7.0-x86_64-unknown-linux-gnu.tar.gz fd-v8.7.0-x86_64-unknown-linux-gnu.tar.gz fd-v8.7.0-x86_64-unknown-linux-gnu
 install_zellij
 install_neovim
+install_helix
 setup
