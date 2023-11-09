@@ -2,6 +2,7 @@ theme = "onedark"
 
 [editor]
 gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
+true-color = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -25,3 +26,11 @@ enable = true
 max-wrap = 25 # increase value to reduce forced mid-word wrapping
 max-indent-retain = 0
 wrap-indicator = ""  # set wrap-indicator to "" to hide it
+
+[editor.indent-guides]
+render = true
+character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.whitespace.render]
+newline = "all"
