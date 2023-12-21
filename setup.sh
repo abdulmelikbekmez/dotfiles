@@ -136,7 +136,7 @@ install_zellij ()
         eccho "zellij yuklu"
     else
         eccho "zellij bulunamadi... Yukleniyor."
-        wget https://github.com/zellij-org/zellij/releases/download/v0.37.2/zellij-x86_64-unknown-linux-musl.tar.gz
+        wget https://github.com/zellij-org/zellij/releases/download/v0.39.2/zellij-x86_64-unknown-linux-musl.tar.gz
         tar -xf zellij-x86_64-unknown-linux-musl.tar.gz
         mv zellij $BIN_PATH
         rm -rf zellij-x86_64-unknown-linux-musl.tar.gz
