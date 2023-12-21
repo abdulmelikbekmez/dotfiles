@@ -133,7 +133,7 @@ install_rust_and_dependencies ()
 install_zellij ()
 {
     if command -v zellij >/dev/null 2>&1; then
-        eccho "zellij yuklu"
+        eccho "zellij zaten yuklu"
     else
         eccho "zellij bulunamadi... Yukleniyor."
         wget https://github.com/zellij-org/zellij/releases/download/v0.39.2/zellij-x86_64-unknown-linux-musl.tar.gz
@@ -146,7 +146,12 @@ install_zellij ()
 
 install_starship ()
 {
-    curl -sS https://starship.rs/install.sh | sh
+    if command -v starship >/dev/null 2>&1; then
+        eccho "starship zaten yuklu"
+    else
+        eccho "starship bulunamadi... Yukleniyor"
+        curl -sS https://starship.rs/install.sh | sh
+    fi
 }
 
 setup()
