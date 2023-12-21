@@ -144,6 +144,11 @@ install_zellij ()
     fi
 }
 
+install_starship ()
+{
+    curl -sS https://starship.rs/install.sh | sh
+}
+
 setup()
 { 
     install_with_apt stow
@@ -175,4 +180,5 @@ install_with_tar fd https://github.com/sharkdp/fd/releases/download/v8.7.0/fd-v8
 install_zellij
 install_neovim
 install_helix
+install_starship
 setup
