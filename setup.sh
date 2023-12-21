@@ -168,6 +168,7 @@ fi
 
 
 install_with_apt wget
+install_with_apt unzip
 install_rust_and_dependencies
 install_deb rg https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb ripgrep_13.0.0_amd64.deb
 install_with_tar fd https://github.com/sharkdp/fd/releases/download/v8.7.0/fd-v8.7.0-x86_64-unknown-linux-gnu.tar.gz fd-v8.7.0-x86_64-unknown-linux-gnu.tar.gz fd-v8.7.0-x86_64-unknown-linux-gnu
