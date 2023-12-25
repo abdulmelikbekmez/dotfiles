@@ -113,11 +113,8 @@ export PATH=$PATH:~/.local/bin
 
 export EDITOR='nvim'
 export VISUAL='nvim'
-export WORKSPACE=''
 
 export JAVA_HOME="/home/$USER/.sdkman/candidates/java/current"
-
-export WEBOTS_HOME="~/Downloads/webots-R2023a-x86-64/webots"
 
 alias ed="nvim ~/.bashrc"
 alias s="source ~/.bashrc"
@@ -125,22 +122,32 @@ alias gl="glxinfo -B"
 alias c-format="clang-format -style=Microsoft -dump-config > .clang-format"
 alias update-submodule="git submodule update --remote --merge"
 
+# ROS Related setup
+if [[ -f /opt/ros/humble/setup.bash ]]; then
+
+    export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    export WORKSPACE="$HOME/dev/ehlikesf_ws/ros2_ws"
+    # export WEBOTS_HOME="~/Downloads/webots-R2023a-x86-64/webots"
+
+    source "$WORKSPACE/install/setup.bash"
+    source /opt/ros/humble/setup.bash
+
+    build ()
+    {
+        cd $WORKSPACE
+
+        if [[ "$#" -eq 1 ]]; then
+            colcon build --symlink-install --packages-select $1
+        elif [[ "$#" -eq 0 ]]; then
+            colcon build --symlink-install 
+        fi
+        
+    }
+    
+fi
+
 eval "$(starship init bash)"
 eval "$(fnm env --use-on-cd)"
-
-build ()
-{
-    cd $WORKSPACE
-
-    if [[ "$#" -eq 1 ]]; then
-        colcon build --symlink-install --packages-select $1
-    elif [[ "$#" -eq 0 ]]; then
-        colcon build --symlink-install 
-    fi
-    
-}
-
-
 
 # KEY=4d0932e501ee43719117112ef7a086ba
 # SCENARIO=1
