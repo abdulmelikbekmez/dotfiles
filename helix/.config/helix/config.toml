@@ -1,4 +1,4 @@
-theme = "onedark"
+theme = "gruvbox"
 
 [editor]
 gutters = ["diff", "diagnostics", "line-numbers", "spacer"]

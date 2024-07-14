@@ -5,12 +5,13 @@ font:
     # family: CaskaydiaCove Nerd Font Mono 
     # family: DaddyTimeMono Nerd Font
     # family: Fira Code Nerd Font
-    # family: VictorMono Nerd Font
-    family: JetBrainsMono Nerd Font
-    # style: Bold
+    family: VictorMono Nerd Font
+    # family: JetBrainsMono Nerd Font
     # family: Terminess Nerd Font
 
-  size: 12.0
+    style: Bold
+
+  size: 17.0
 
 # colors:
 #   primary:

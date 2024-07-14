@@ -66,12 +66,15 @@ install_helix ()
         eccho "Helix Yuklu"
     else
         eccho "Helix bulunamadi... Yukleniyor."
-        wget https://github.com/helix-editor/helix/releases/download/23.10/helix-23.10-x86_64-linux.tar.xz
-        tar -xf helix-23.10-x86_64-linux.tar.xz 
-        mv helix-23.10-x86_64-linux ${HOME}/helix
+        version="24.07"
+        helixFolder="helix-${version}-x86_64-linux"
+        helixTar="${helixFolder}.tar"
+        wget https://github.com/helix-editor/helix/releases/download/${version}/${helixTar}.xz
+        tar -xf ${helixTar}.xz 
+        mv ${helixFolder} ${HOME}/helix
         sudo ln -s ${HOME}/helix/hx $BIN_PATH
         eccho "Helix yuklendi."
-        rm -rf helix-23.10-x86_64-linux.tar.xz
+        rm -rf ${helixTar}.xz
     fi
 }
 
@@ -135,8 +138,9 @@ install_zellij ()
     if command -v zellij >/dev/null 2>&1; then
         eccho "zellij zaten yuklu"
     else
+        version="v0.40.1"
         eccho "zellij bulunamadi... Yukleniyor."
-        wget https://github.com/zellij-org/zellij/releases/download/v0.39.2/zellij-x86_64-unknown-linux-musl.tar.gz
+        wget https://github.com/zellij-org/zellij/releases/download/${version}/zellij-x86_64-unknown-linux-musl.tar.gz
         tar -xf zellij-x86_64-unknown-linux-musl.tar.gz
         mv zellij $BIN_PATH
         rm -rf zellij-x86_64-unknown-linux-musl.tar.gz

@@ -111,7 +111,7 @@ fi
 source $HOME/.cargo/env
 export PATH=$PATH:~/.local/bin
 
-export EDITOR='nvim'
+export EDITOR='hx'
 export VISUAL='nvim'
 
 export JAVA_HOME="/home/$USER/.sdkman/candidates/java/current"
@@ -124,13 +124,27 @@ alias update-submodule="git submodule update --remote --merge"
 
 # ROS Related setup
 if [[ -f /opt/ros/humble/setup.bash ]]; then
+    source /opt/ros/humble/setup.bash
 
-    export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    # export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+
+    # EHLIKESF
     export WORKSPACE="$HOME/dev/ehlikesf_ws/ros2_ws"
+    export PX4_PATH="$HOME/dev/ehlikesf_ws/PX4-Autopilot"
+
+    # XOSA
+    # export WORKSPACE="$HOME/dev/XOSA/src/xosa_ros"
+    # source "$WORKSPACE/setup.bash"
+
+    # VRX
+    # export WORKSPACE="$HOME/dev/xosa_ws/vrx_ws"
+
+    # WEBOTS
     # export WEBOTS_HOME="~/Downloads/webots-R2023a-x86-64/webots"
 
-    source "$WORKSPACE/install/setup.bash"
-    source /opt/ros/humble/setup.bash
+
+    # Source ROS2 workpace
+    source $WORKSPACE/install/setup.bash
 
     build ()
     {
