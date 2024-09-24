@@ -110,13 +110,14 @@ fi
 
 source $HOME/.cargo/env
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/flutter/bin
 
 export EDITOR='hx'
-export VISUAL='nvim'
+export VISUAL='hx'
 
 export JAVA_HOME="/home/$USER/.sdkman/candidates/java/current"
 
-alias ed="nvim ~/.bashrc"
+alias ed="$EDITOR ~/.bashrc"
 alias s="source ~/.bashrc"
 alias gl="glxinfo -B"
 alias c-format="clang-format -style=Microsoft -dump-config > .clang-format"
@@ -126,11 +127,13 @@ alias update-submodule="git submodule update --remote --merge"
 if [[ -f /opt/ros/humble/setup.bash ]]; then
     source /opt/ros/humble/setup.bash
 
-    # export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
     # EHLIKESF
     export WORKSPACE="$HOME/dev/ehlikesf_ws/ros2_ws"
     export PX4_PATH="$HOME/dev/ehlikesf_ws/PX4-Autopilot"
+    # export ZENOH_CONFIG="$WORKSPACE/src/ehlikesf/ehlikesf/config/config.json5"
+    export ZENOH_CONFIG="~/.config/zenoh/config.json5"
 
     # XOSA
     # export WORKSPACE="$HOME/dev/XOSA/src/xosa_ros"

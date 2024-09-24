@@ -5,11 +5,12 @@ font:
     # family: CaskaydiaCove Nerd Font Mono 
     # family: DaddyTimeMono Nerd Font
     # family: Fira Code Nerd Font
-    family: VictorMono Nerd Font
+    # family: VictorMono Nerd Font
     # family: JetBrainsMono Nerd Font
+    family: Hurmit Nerd Font
     # family: Terminess Nerd Font
 
-    style: Bold
+    # style: Bold
 
   size: 17.0
 
