@@ -123,9 +123,20 @@ alias gl="glxinfo -B"
 alias c-format="clang-format -style=Microsoft -dump-config > .clang-format"
 alias update-submodule="git submodule update --remote --merge"
 
+alias serial-pc="sudo dmidecode -t system | grep Serial"
+
+# Pop Os Related functions
+
+gpu() {
+    __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia "$@"
+}
+
 # ROS Related setup
-if [[ -f /opt/ros/humble/setup.bash ]]; then
-    source /opt/ros/humble/setup.bash
+
+# export ZENOH_CONFIG="$HOME/.config/zenoh/config.json5"
+# ROS_DISTRO=humble
+if [[ -f /opt/ros/${ROS_DISTRO}/setup.bash ]]; then
+    source /opt/ros/${ROS_DISTRO}/setup.bash
 
     export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
@@ -147,7 +158,9 @@ if [[ -f /opt/ros/humble/setup.bash ]]; then
 
 
     # Source ROS2 workpace
-    source $WORKSPACE/install/setup.bash
+    if [[ -f $WORKSPACE/install/setup.bash ]]; then
+        source $WORKSPACE/install/setup.bash
+    fi
 
     build ()
     {
@@ -171,5 +184,7 @@ eval "$(fnm env --use-on-cd)"
 # alias send='curl --insecure --request PUT --data-binary "@ehlikesf_teknofest.zip" "https://192.168.2.4:1453/put-code?key=$KEY&scenario=$SCENARIO"'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# export SDKMAN_DIR="$HOME/.sdkman"
+# [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH="/home/abdulmelik/.pixi/bin:$PATH"
+. "$HOME/.cargo/env"

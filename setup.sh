@@ -66,7 +66,7 @@ install_helix ()
         eccho "Helix Yuklu"
     else
         eccho "Helix bulunamadi... Yukleniyor."
-        version="24.07"
+        version="25.01.0"
         helixFolder="helix-${version}-x86_64-linux"
         helixTar="${helixFolder}.tar"
         wget https://github.com/helix-editor/helix/releases/download/${version}/${helixTar}.xz
@@ -138,7 +138,7 @@ install_zellij ()
     if command -v zellij >/dev/null 2>&1; then
         eccho "zellij zaten yuklu"
     else
-        version="v0.40.1"
+        version="v0.42.2"
         eccho "zellij bulunamadi... Yukleniyor."
         wget https://github.com/zellij-org/zellij/releases/download/${version}/zellij-x86_64-unknown-linux-musl.tar.gz
         tar -xf zellij-x86_64-unknown-linux-musl.tar.gz
@@ -186,6 +186,7 @@ install_with_apt unzip
 install_rust_and_dependencies
 install_deb rg https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb ripgrep_13.0.0_amd64.deb
 install_with_tar fd https://github.com/sharkdp/fd/releases/download/v8.7.0/fd-v8.7.0-x86_64-unknown-linux-gnu.tar.gz fd-v8.7.0-x86_64-unknown-linux-gnu.tar.gz fd-v8.7.0-x86_64-unknown-linux-gnu
+install_with_tar gitui https://github.com/gitui-org/gitui/releases/download/v0.27.0/gitui-linux-x86_64.tar.gz gitui-linux-x86_64.tar.gz gitui-linux-x86_64
 install_zellij
 install_neovim
 install_helix
